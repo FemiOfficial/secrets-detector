@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "target": "es2015",
+    "module": "commonjs",
+    "declaration": true,
+    "outDir": "./dist",
+    "rootDirs": ["src"],
+    "baseUrl": "src",
+    "removeComments": true,
+    "strict": false,
+    "strictPropertyInitialization": false,
+    "resolveJsonModule": true,
+    "experimentalDecorators": true,
+    "esModuleInterop": true,
+    "noUnusedLocals": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true
+  },
+  "typeRoots": ["./node_modules/@types"],
+  "include": ["./**/*"]
+}

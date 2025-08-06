@@ -1,0 +1,21 @@
+{
+  "name": "secrets-detector",
+  "version": "1.0.0",
+  "description": "A Library for pre-commit hook to detect secrets in a codebase before an commit to Git",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FemiOfficial/secrets-detector.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/FemiOfficial/secrets-detector/issues"
+  },
+  "homepage": "https://github.com/FemiOfficial/secrets-detector#readme"
+}
