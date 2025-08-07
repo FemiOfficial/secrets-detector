@@ -1,0 +1,223 @@
+{
+  "description": "Common Key Patterns for Secrets Detection",
+  "exclude": [
+    "dist/",
+    "node_modules/",
+    "test/",
+    ".git/",
+    "coverage/",
+    "build/",
+    "*.log"
+  ],
+  "rules": [{
+      "id": "aws-access-key-id",
+      "description": "AWS Access Key ID",
+      "regex": "(?i)(aws_access_key_id|aws_access_key)\\s*[=:]\\s*[\"']?AKIA[0-9A-Z]{16}[\"']?",
+      "tags": ["aws", "key"],
+      "severity": "HIGH"
+    },
+    {
+      "id": "aws-secret-access-key",
+      "description": "AWS Secret Access Key",
+      "regex": "(?i)(aws_secret_access_key|aws_secret_key)\\s*[=:]\\s*[\"']?[A-Za-z0-9+/]{40}[\"']?",
+      "tags": ["aws", "secret"],
+      "severity": "HIGH"
+    },
+    {
+      "id": "aws-session-token",
+      "description": "AWS Session Token",
+      "regex": "(?i)(aws_session_token|session_token)\\s*[=:]\\s*[\"']?[A-Za-z0-9+/]{20,}[\"']?",
+      "tags": ["aws", "token"],
+      "severity": "HIGH"
+    },
+    {
+      "id": "jwt-token",
+      "description": "JWT Token",
+      "regex": "(?i)(jwt|token|bearer)\\s*[=:]\\s*[\"']?eyJ[A-Za-z0-9-_=]+\\.[A-Za-z0-9-_=]+\\.?[A-Za-z0-9-_.+/=]*[\"']?",
+      "tags": ["jwt", "token"],
+      "severity": "HIGH"
+    },
+    {
+      "id": "github-token",
+      "description": "GitHub Token",
+      "regex": "(?i)(github_token|gh_token|ghp_)\\s*[=:]\\s*[\"']?ghp_[A-Za-z0-9]{36}[\"']?",
+      "tags": ["github", "token"],
+      "severity": "HIGH"
+    },
+    {
+      "id": "github-personal-access-token",
+      "description": "GitHub Personal Access Token",
+      "regex": "(?i)(github_pat|pat_)\\s*[=:]\\s*[\"']?ghp_[A-Za-z0-9]{36}[\"']?",
+      "tags": ["github", "token"],
+      "severity": "HIGH"
+    },
+    {
+      "id": "api-key-generic",
+      "description": "Generic API Key",
+      "regex": "(?i)(api_key|apikey|api-key)\\s*[=:]\\s*[\"']?[A-Za-z0-9+/=]{20,}[\"']?",
+      "tags": ["api", "key"],
+      "severity": "HIGH"
+    },
+    {
+      "id": "secret-key-generic",
+      "description": "Generic Secret Key",
+      "regex": "(?i)(secret_key|secretkey|secret-key)\\s*[=:]\\s*[\"']?[A-Za-z0-9+/=]{20,}[\"']?",
+      "tags": ["secret", "key"],
+      "severity": "HIGH"
+    },
+    {
+      "id": "database-password",
+      "description": "Database Password",
+      "regex": "(?i)(db_password|database_password|mysql_password|postgres_password|mongo_password)\\s*[=:]\\s*[\"']?[^\"']{8,}[\"']?",
+      "tags": ["database", "password"],
+      "severity": "HIGH"
+    },
+    {
+      "id": "redis-password",
+      "description": "Redis Password",
+      "regex": "(?i)(redis_password|redis_pwd|redis_pass)\\s*[=:]\\s*[\"']?[^\"']{8,}[\"']?",
+      "tags": ["redis", "password"],
+      "severity": "HIGH"
+    },
+    {
+      "id": "private-key-rsa",
+      "description": "RSA Private Key",
+      "regex": "-----BEGIN\\s+RSA\\s+PRIVATE\\s+KEY-----[\\s\\S]*?-----END\\s+RSA\\s+PRIVATE\\s+KEY-----",
+      "tags": ["private", "key", "rsa"],
+      "severity": "HIGH"
+    },
+    {
+      "id": "private-key-ec",
+      "description": "EC Private Key",
+      "regex": "-----BEGIN\\s+EC\\s+PRIVATE\\s+KEY-----[\\s\\S]*?-----END\\s+EC\\s+PRIVATE\\s+KEY-----",
+      "tags": ["private", "key", "ec"],
+      "severity": "HIGH"
+    },
+    {
+      "id": "private-key-generic",
+      "description": "Generic Private Key",
+      "regex": "-----BEGIN\\s+PRIVATE\\s+KEY-----[\\s\\S]*?-----END\\s+PRIVATE\\s+KEY-----",
+      "tags": ["private", "key"],
+      "severity": "HIGH"
+    },
+    {
+      "id": "ssh-private-key",
+      "description": "SSH Private Key",
+      "regex": "-----BEGIN\\s+OPENSSH\\s+PRIVATE\\s+KEY-----[\\s\\S]*?-----END\\s+OPENSSH\\s+PRIVATE\\s+KEY-----",
+      "tags": ["ssh", "private", "key"],
+      "severity": "HIGH"
+    },
+    {
+      "id": "slack-token",
+      "description": "Slack Token",
+      "regex": "(?i)(slack_token|xoxb|xoxp|xoxa|xoxr)\\s*[=:]\\s*[\"']?xox[baprs]-[A-Za-z0-9-]+[\"']?",
+      "tags": ["slack", "token"],
+      "severity": "HIGH"
+    },
+    {
+      "id": "stripe-key",
+      "description": "Stripe Key",
+      "regex": "(?i)(stripe_key|stripe_secret|sk_live|sk_test|pk_live|pk_test)\\s*[=:]\\s*[\"']?(sk|pk)_(live|test)_[A-Za-z0-9]{24}[\"']?",
+      "tags": ["stripe", "key"],
+      "severity": "HIGH"
+    },
+    {
+      "id": "firebase-key",
+      "description": "Firebase Key",
+      "regex": "(?i)(firebase_key|firebase_secret)\\s*[=:]\\s*[\"']?AIza[A-Za-z0-9]{35}[\"']?",
+      "tags": ["firebase", "key"],
+      "severity": "HIGH"
+    },
+    {
+      "id": "google-api-key",
+      "description": "Google API Key",
+      "regex": "(?i)(google_api_key|google_key)\\s*[=:]\\s*[\"']?AIza[A-Za-z0-9]{35}[\"']?",
+      "tags": ["google", "api", "key"],
+      "severity": "HIGH"
+    },
+    {
+      "id": "sendgrid-key",
+      "description": "SendGrid Key",
+      "regex": "(?i)(sendgrid_key|sendgrid_api_key)\\s*[=:]\\s*[\"']?SG\\.[A-Za-z0-9]{22}\\.[A-Za-z0-9]{43}[\"']?",
+      "tags": ["sendgrid", "key"],
+      "severity": "HIGH"
+    },
+    {
+      "id": "twilio-key",
+      "description": "Twilio Key",
+      "regex": "(?i)(twilio_key|twilio_auth_token)\\s*[=:]\\s*[\"']?[A-Za-z0-9]{32}[\"']?",
+      "tags": ["twilio", "key"],
+      "severity": "HIGH"
+    },
+    {
+      "id": "mailgun-key",
+      "description": "Mailgun Key",
+      "regex": "(?i)(mailgun_key|mailgun_api_key)\\s*[=:]\\s*[\"']?key-[A-Za-z0-9]{32}[\"']?",
+      "tags": ["mailgun", "key"],
+      "severity": "HIGH"
+    },
+    {
+      "id": "heroku-key",
+      "description": "Heroku Key",
+      "regex": "(?i)(heroku_key|heroku_api_key)\\s*[=:]\\s*[\"']?[A-Za-z0-9]{8}-[A-Za-z0-9]{4}-[A-Za-z0-9]{4}-[A-Za-z0-9]{4}-[A-Za-z0-9]{12}[\"']?",
+      "tags": ["heroku", "key"],
+      "severity": "HIGH"
+    },
+    {
+      "id": "digitalocean-token",
+      "description": "DigitalOcean Token",
+      "regex": "(?i)(digitalocean_token|do_token)\\s*[=:]\\s*[\"']?dop_v1_[A-Za-z0-9]{64}[\"']?",
+      "tags": ["digitalocean", "token"],
+      "severity": "HIGH"
+    },
+    {
+      "id": "docker-registry",
+      "description": "Docker Registry Credentials",
+      "regex": "(?i)(docker_registry|registry_password)\\s*[=:]\\s*[\"']?[A-Za-z0-9+/=]{20,}[\"']?",
+      "tags": ["docker", "registry"],
+      "severity": "HIGH"
+    },
+    {
+      "id": "kubernetes-secret",
+      "description": "Kubernetes Secret",
+      "regex": "(?i)(k8s_secret|kubernetes_secret)\\s*[=:]\\s*[\"']?[A-Za-z0-9+/=]{20,}[\"']?",
+      "tags": ["kubernetes", "secret"],
+      "severity": "HIGH"
+    },
+    {
+      "id": "azure-key",
+      "description": "Azure Key",
+      "regex": "(?i)(azure_key|azure_secret)\\s*[=:]\\s*[\"']?[A-Za-z0-9+/=]{20,}[\"']?",
+      "tags": ["azure", "key"],
+      "severity": "HIGH"
+    },
+    {
+      "id": "gcp-key",
+      "description": "Google Cloud Platform Key",
+      "regex": "(?i)(gcp_key|google_cloud_key)\\s*[=:]\\s*[\"']?[A-Za-z0-9+/=]{20,}[\"']?",
+      "tags": ["gcp", "key"],
+      "severity": "HIGH"
+    },
+    {
+      "id": "custom-pattern-1",
+      "description": "Custom Pattern for AWS-like keys",
+      "regex": "(?i)(aws_key|aws_secret|aws_token)\\s*[=:]\\s*[\"']?[A-Z0-9+/=]{20,}[\"']?",
+      "tags": ["custom", "aws"],
+      "severity": "HIGH"
+    },
+    {
+      "id": "custom-pattern-2",
+      "description": "Custom Pattern for generic tokens",
+      "regex": "(?i)(token|key|secret|password)\\s*[=:]\\s*[\"']?[A-Za-z0-9+/=]{20,}[\"']?",
+      "tags": ["custom", "generic"],
+      "severity": "MEDIUM"
+    },
+    {
+      "id": "custom-pattern-3",
+      "description": "Custom Pattern for authorization headers",
+      "regex": "(?i)(authorization|auth)\\s*[=:]\\s*[\"']?(bearer|basic)\\s+[A-Za-z0-9+/=]+[\"']?",
+      "tags": ["custom", "auth"],
+      "severity": "HIGH"
+    }
+  ]
+}

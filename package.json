@@ -2,20 +2,34 @@
   "name": "secrets-detector",
   "version": "1.0.0",
   "description": "A Library for pre-commit hook to detect secrets in a codebase before an commit to Git",
-  "main": "index.js",
+  "main": "dist/run-check.js",
+  "bin": {
+    "run-gitleaks-check": "dist/run-check.js"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "prebuild": "rm -rf dist",
+    "build": "npm run prebuild && tsc --build && cp .gitleak.json dist",
+    "postinstall": "npm run build && node dist/installer.js",
+    "gitleaks:run": "node dist/run-check.js"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/FemiOfficial/secrets-detector.git"
   },
   "keywords": [],
-  "author": "",
+  "author": "@femiofficial",
   "license": "ISC",
-  "type": "commonjs",
   "bugs": {
     "url": "https://github.com/FemiOfficial/secrets-detector/issues"
   },
-  "homepage": "https://github.com/FemiOfficial/secrets-detector#readme"
+  "homepage": "https://github.com/FemiOfficial/secrets-detector#readme",
+  "dependencies": {
+    "axios": "^1.11.0",
+    "tar": "^7.4.3"
+  },
+  "devDependencies": {
+    "@types/node": "^24.2.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.2"
+  }
 }
